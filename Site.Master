@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Project.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>PaperlessPay</title>
+    <style>
+    /* CSS for the navigation bar */
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/Img/homebg.jpeg');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        width:85%;
+        margin:auto;
+        padding:35px 0;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+         
+   
+/*
+        background-color: black;
+        color: white;
+        padding: 10px;
+        overflow: hidden;*/
+    }
+
+    .navbar ul li{
+        list-style:none;
+        display:inline-block;
+        margin:0 20px;
+        position:relative;
+
+    }
+    .logo{
+        width:120px;
+        cursor:pointer;
+
+    }
+
+    .navbar ul li a {
+        color:#fff;
+        text-decoration: none;
+        text-transform:uppercase;
+    }
+    .navbar ul li ::after{
+        content:'';
+        height:3px;
+        width:0;
+        background:#009688;
+        position:absolute;
+        left:0;
+        bottom:-10px;
+        transition:0.5s;
+
+    }
+
+    .navbar ul li:hover ::after{
+        width:100%;
+
+    }
+
+    
+
+   .content {
+            flex: 1; /* Take remaining vertical space */
+            padding-bottom: 50px; /* Adjust for the footer height */
+           
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+             color:black;
+        }
+</style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar">
+            <img src="Img/pplogo.png" class="logo" />
+            <ul>
+
+                <li><a  id="HomeLink" runat="server" href="Home.aspx">Home</a></li>
+            
+            <li><a id="generateInvoiceLink" runat="server" href="GenerateInvoice.aspx">Generate Invoice</a></li>
+            <li><a id="invoiceRecordsLink" runat="server" href="InvoiceRecords.aspx">Invoice Records</a></li>
+            <li><a id="logoutLink" runat="server" href="Logout.aspx" onclick="confirmLogout()">Log out</a></li>
+            </ul>
+            
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+        
+        
+      <%--  <footer>
+            <p>
+                &copy; 2023 InvoiceGen . All rights reserved. |
+                <a href="#">Privacy</a> |
+                <a href="#">Terms and Conditions</a>
+            </p>
+        </footer>--%>
+
+        
+        <footer>
+            <p>
+                &copy; 2023 PaperlessPay . All rights reserved. |
+                <a href="#">Privacy</a> |
+                <a href="#">Terms and Conditions</a>
+            </p>
+        </footer>
+    </form>
+</body>
+</html>
